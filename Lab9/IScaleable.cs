@@ -1,0 +1,5 @@
+namespace Lab9{
+    public interface IScaleable {
+        void Scale(double scale);
+    }
+}
