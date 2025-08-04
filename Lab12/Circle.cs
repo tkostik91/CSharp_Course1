@@ -11,7 +11,8 @@ namespace Lab12{
         private int radius;
 
         public override bool Equals(Object ? obj){
-            if(obj is Circle t) {
+            if(obj != null && obj.GetType() == typeof(Circle)) {
+                Circle t = (Circle)obj;
                 return this.Color == t.Color;
             }
             else 
@@ -19,20 +20,12 @@ namespace Lab12{
         } 
 
         public override int GetHashCode(){
-            return Color.GetHashCode();
+            return HashCode.Combine(Color);
         } 
 
-        public static bool operator ==(Circle? obj1, Circle? obj2){
-             if(obj1 is Circle t1 && obj2 is Circle t2) 
-                return t1.Color == t2.Color;
-            return false; 
-        } 
+        public static bool operator ==(Circle obj1, Circle obj2) => obj1.Equals(obj2);
 
-        public static bool operator !=(Circle? obj1, Circle? obj2){
-             if(obj1 is Circle t1 && obj2 is Circle t2 ) 
-                return t1.Color != t2.Color;
-            return true; 
-        } 
+        public static bool operator !=(Circle obj1, Circle obj2) => !(obj1 == obj2); 
 
         public int Radius
         {
