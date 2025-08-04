@@ -1,0 +1,5 @@
+namespace Lab13{
+    public interface IScaleable {
+        void Scale(double scale);
+    }
+}
